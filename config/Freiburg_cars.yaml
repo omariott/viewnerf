@@ -1,0 +1,42 @@
+data:
+ dataset: 'Freiburg_cars'
+ category: 'car'
+ data_dir: ''
+ 
+training:
+ device: 0
+ resume_from_ckpt: ''
+ print_interval: 200
+ epochs: 200
+ batch_size: 32
+ learning_rate: 0.001
+ pose_regularisation: 'band'
+ exact_sphere: False
+ out_res: 128
+ in_res: 128
+
+model:
+ cont_size: 256
+ n_heads: 3
+ renderer:
+  fov: 30
+  resolution_vol: 128
+  n_ray_samples: 128
+  depth_range: [0,4]
+  radius: 2
+ decoder: 
+  hidden_size: 128
+  use_viewdirs: True
+  initial_conditioning: True
+  skips: [0]
+  downscale_by: 4
+  n_freq_posenc: 8
+  n_freq_posenc_view: 1
+  n_blocks_shape: 2
+  n_blocks_view: 0
+  final_sigmoid_activation: True
+  rgb_out_dim: 3
+
+logs:
+ base_dir: ''
+ save_frequency: 5
